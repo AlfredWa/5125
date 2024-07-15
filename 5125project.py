@@ -15,6 +15,7 @@ l = 'Hello'
 
 author = ""
 genre = ""
+rating = 0
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json()
@@ -51,6 +52,7 @@ def webhook():
     if type == 'FeedbackBasedRecommdation':
         reText = req['queryResult']['fulfillmentText']
         ratinglst =  req['queryResult']['parameters']['rating']
+        global rating
         rating = int(ratinglst[0].split()[0])
         filter(genre, author, rating)
         return {

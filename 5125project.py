@@ -4,6 +4,7 @@ from datetime import datetime
 from similiarity import recommandbySim
 from filtering import filter
 import re
+import preprocessing
 
 app = Flask(__name__)
 

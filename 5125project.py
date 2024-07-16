@@ -27,7 +27,7 @@ def webhook():
         reText = req['queryResult']['fulfillmentText']
         print(reText)
         return {
-            "fulfillmentText": f'{reText} This response is posted from backend {time}',
+            "fulfillmentText": f'{reText}',
             "source": "webhookdata"
         }
     if type == 'AuthorBasedRecommendation':
@@ -37,7 +37,7 @@ def webhook():
         print(author)
         print(reText)
         return {
-            "fulfillmentText": f'{reText}: book recommanded by the system (demo) {time}',
+            "fulfillmentText": f'Your prefered author is {author}. {reText}',
             "source": "webhookdata"
         }
     if type == 'GenreBasedRecommendation':
@@ -46,7 +46,7 @@ def webhook():
         genre =  str(req['queryResult']['parameters']['genres'])
         print(genre)
         return {
-            "fulfillmentText": f'{reText}: your prefered genre is {genre}',
+            "fulfillmentText": f'Your prefered genre is {genre}. {reText}',
             "source": "webhookdata"
         }
     if type == 'FeedbackBasedRecommdation':
@@ -56,7 +56,7 @@ def webhook():
         rating = int(ratinglst[0].split()[0])
         filter(genre, author, rating)
         return {
-            "fulfillmentText": f'{reText}: your prefered genre is {genre}',
+            "fulfillmentText": f'Your prefered rating is {rating} stars. {reText}',
             "source": "webhookdata"
         }
     if type == 'SimilarityBasedRecommendation':
